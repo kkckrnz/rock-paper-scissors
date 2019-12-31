@@ -1,78 +1,25 @@
+<!DOCTYPE html>
 
-<script>
-let winCount;
+<html>
 
-function computerPlay() {
-    let randomNumber = Math.random() * 3
-    if (randomNumber <= 1) {
-        return 'rock';
-    } else if (randomNumber <= 2) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
-}
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function round(playerSelection, computerSelection) {
-    let result;
+<body>
+    <div>
+        <button id="rock" class="selection">Rock</button>
+        <button id="paper" class="selection">Paper</button>
+        <button id="scissors" class="selection">Scissors</button>
+    </div>
 
-    if (playerSelection === computerSelection) {
-        result = 'draw'
-    } else {
-        switch (playerSelection) {
-            case 'rock':
-                if (computerSelection === 'paper') {
-                    result = 'lose'
-                } else {
-                    result = 'win'
-                }
-                break;
-            case 'paper':
-                if (computerSelection === 'rock') {
-                    result = 'win'
-                } else {
-                    result = 'lose'
-                }
-                break;
-            case 'scissors':
-                if (computerSelection === 'rock') {
-                    result = 'lose'
-                } else {
-                    result = 'win'
-                }
-                break;
-            }
-    }
+    <div id="container">
+        <p>Who's going to win?</p>
+    </div>
 
-    if (result === 'win') {
-        winCount += 1;
-    }
-    
-    return message(result, playerSelection, computerSelection);
-}
+    <script src="script.js"></script>
+</body>
 
-function message(result, player, computer) {
-    player = player[0].toUpperCase() + player.slice(1);
-    computer = computer[0].toUpperCase() + computer.slice(1);
-    if (result === 'win') {
-        return 'You Win! ' + player + ' beats ' + computer;
-    } else if (result === 'lose') {
-        return 'You Lose! ' + computer + ' beats ' + player;
-    } else {
-        return 'Draw'
-    }
-}
-
-function game() {
-    winCount = 0;
-
-    for (i=0; i<5; i++) {
-        let player = prompt("Rock Paper Scissors?").toLowerCase()
-        let computer = computerPlay()
-        console.log('[Player]: ' + player + ' [Computer]: ' + computer);
-        console.log(round(player, computer))
-    }
-    
-    return '[Game Over] You won ' + winCount + ' out of 5 games';
-}
-</script>
+</html>
